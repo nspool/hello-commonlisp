@@ -1,0 +1,52 @@
+
+* Notes on the
+* Structure and Interpretation of Computer Programs
+* nspool
+
+* 1 - Building Abstractions with Procedures
+Computational process manipulate data, directed by a progam. Lisp created to formalise *recursion equations* as a model for computation. 
+Lisp has the advantage of being able to represent procedures as data and blur the distinction between data and processes.
+
+** 1.1 Elements of Programming
+Procedures and data
+- *primitive expressions* the simplest entities in the language
+- *means of combination* compound elements are build from simpler ones
+- *means of abstraction* compound elements can be named and manipulated as units
+
+*** 1.1.1 Expressions
+Operator and operands expressed in prefix notation:
+#+BEGIN_SRC scheme
+(+ 100 200)
+#+END_SRC
+The *read-eval-print* loop reads the expression, evaluates it and prints the result.
+
+*** 1.1.2 Naming and the Environment
+*define* is the simplest means of abstraction in the language. eg this gives 13:
+#+BEGIN_SRC scheme
+(define asdf 11)
+(+ asdf 2)
+#+END_SRC
+The memory where this name-object pair is stored is called the *environment* (in this example, it is the global environment.)
+
+*** 1.1.3 Evaluating Combinations
+- Evaluate the subexpressions of the combinations
+- Apply the procedure that is the value of the leftmost subexpression (the *operator*) to the arguments that are the values of the other subexpressions (the *operands*)
+The "percolate values upward" form of the evaluation rule is an example of *tree accumulation*.
+
+*** 1.1.4 Compound Procedures
+Any powerful programming language must have:
+- Numbers and arithmetic operations are primitive data and procedures
+- Nesting of combinations provides a way to combine operations
+- Definitions (*define*) that map names with values provide a limited means of abstration
+Now *procedure definitions* give a more powerful abstraction:
+*(define (<name> <formal parameters>) <body>)*
+
+*** 1.1.5 The Substitution Model for Procedure Application
+By evaluating the inner expressions first and substituting the expression with the evaluated value.
+The "fully expand then reduce" method is *normal-order evaluation*.
+The "evaluate the arguments and then apply" method is *applicative-order evaluation*.
+
+*** 1.1.6 Conditional Expressions and Predicates
+An expression that is either true or false is a *predicate*. For conditional expressions a list of predicates are provided each with a *consequent expression*. The list of predicates are evaluated one-by-one until one is found that is true, and then the consequent expression associated with it is returned.
+An *if* statement consists of one predicate, a *consequent* if true and *alternative* if false.
+
