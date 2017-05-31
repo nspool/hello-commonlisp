@@ -1,6 +1,14 @@
 
 ;;;; Learning Common Lisp
 
+;; Write a factorial function
+
+(defun factorial (a) 
+(if (eq a 1) 
+    1 
+    (* a (factorial (- a 1)))))
+
+
 ;; Based on: http://www.gigamonkeys.com/book/
 ;; stars mean global variables
 ;; push is a macro
