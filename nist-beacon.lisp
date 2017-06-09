@@ -32,7 +32,11 @@
 
 (defun get-beacon-record () 
  (let ((url (concatenate 'string *record-url* (format nil "~a" (get-unix-time)))))
-   (format t url)))
+   (format t "Using: ~a" url)
+   (drakma:http-request url)))
 
-;;; (drakma:http-request "http://lisp.org/")
+(defparameter *test-url* "https://beacon.nist.gov/")
+
+(defun test-https ()
+  (drakma:http-request *test-url*))
 
