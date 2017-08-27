@@ -8,7 +8,6 @@
     1 
     (* a (factorial (- a 1)))))
 
-
 ;; Based on: http://www.gigamonkeys.com/book/
 ;; stars mean global variables
 ;; push is a macro
@@ -29,14 +28,6 @@
   (format t "Summing ~d and ~d.~%" x y)
   (+ x y))
 
-(defun make-cd (title artist rating ripped)
-  (list :title title :artist artist :rating rating :ripped ripped))
-
-(defun add-record (cd) (push cd *db*)) 
-
-(defun dump-db ()
-  (format t "~{~a:~10t~a~%~}~%" *db*))
-
 (defun hello-progn ()
   (progn 
     (format t "Hello ")
@@ -53,3 +44,6 @@
 (mywhen t
   (hello-progn)
   (hello-progn))
+
+
+
